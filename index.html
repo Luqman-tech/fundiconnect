@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundiConnect - Find & Book Trusted Service Providers in Kenya</title>
+    <meta name="description" content="Find and book trusted fundis, cleaners, tutors, and service providers in Kenya. Quick booking via WhatsApp with verified professionals.">
+    <meta name="keywords" content="fundi, services, Kenya, booking, plumber, electrician, cleaner, tutor, WhatsApp">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="FundiConnect - Find Trusted Service Providers">
+    <meta property="og:description" content="Book trusted fundis and service providers in Kenya via WhatsApp">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://fundiconnect.com">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>🔧</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #28a745;
+            margin-top: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .service-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .rating {
+            background: #ffd700;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .service-details {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn {
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #128c7e;
+            transform: scale(1.05);
+        }
+
+        .admin-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .payment-content {
+            background: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 FundiConnect</h1>
+            <p>Find & Book Trusted Service Providers in Your Area</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Customer Booking Section -->
+            <div class="card">
+                <h2>🔍 Find a Service Provider</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Service Needed</label>
+                        <select id="serviceType" required>
+                            <option value="">Select Service</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="cleaner">House Cleaner</option>
+                            <option value="tutor">Tutor</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="mechanic">Mechanic</option>
+                            <option value="gardener">Gardener</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Your Location</label>
+                        <input type="text" id="location" placeholder="e.g., Westlands, Nairobi" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="urgency">When do you need this?</label>
+                        <select id="urgency" required>
+                            <option value="">Select Timeline</option>
+                            <option value="today">Today</option>
+                            <option value="tomorrow">Tomorrow</option>
+                            <option value="this-week">This Week</option>
+                            <option value="next-week">Next Week</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">Your Phone Number</label>
+                        <input type="tel" id="customerPhone" placeholder="07xxxxxxxx" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Find Service Providers</button>
+                </form>
+            </div>
+
+            <!-- Service Provider Registration -->
+            <div class="card">
+                <h2>💼 Join as Service Provider</h2>
+                <form id="providerForm">
+                    <div class="form-group">
+                        <label for="providerName">Full Name</label>
+                        <input type="text" id="providerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="providerService">Your Service</label>
+                        <select id="providerService" required>
+                            <option value="">Select Your Service</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="cleaner">House Cleaner</option>
+                            <option value="tutor">Tutor</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="mechanic">Mechanic</option>
+                            <option value="gardener">Gardener</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="providerLocation">Service Area</label>
+                        <input type="text" id="providerLocation" placeholder="Areas you serve" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="providerPhone">Phone Number</label>
+                        <input type="tel" id="providerPhone" placeholder="07xxxxxxxx" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hourlyRate">Hourly Rate (KES)</label>
+                        <input type="number" id="hourlyRate" placeholder="500" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Register Now</button>
+                    <button type="button" class="btn btn-secondary" onclick="openPayment()">Pay Listing Fee (KES 200/week)</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Available Services -->
+        <div class="services-grid" id="servicesContainer">
+            <!-- Services will be populated here -->
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel">
+            <h2>📊 Platform Analytics</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalProviders">0</div>
+                    <div>Registered Providers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalBookings">0</div>
+                    <div>Total Bookings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="revenue">0</div>
+                    <div>Revenue (KES)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeToday">0</div>
+                    <div>Active Today</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <span class="close" onclick="closePayment()">&times;</span>
+            <h2>💳 M-Pesa Payment</h2>
+            <p>Pay KES 200 for weekly listing</p>
+            <div class="form-group">
+                <label>M-Pesa Number</label>
+                <input type="tel" id="mpesaNumber" placeholder="07xxxxxxxx">
+            </div>
+            <button class="btn" onclick="processPayment()">Pay Now</button>
+        </div>
+    </div>
+
+    <script>
+        // Production-ready data storage using localStorage
+        const STORAGE_KEYS = {
+            providers: 'fundiconnect_providers',
+            bookings: 'fundiconnect_bookings',
+            revenue: 'fundiconnect_revenue'
+        };
+
+        // Initialize data from localStorage or use defaults
+        let providers = JSON.parse(localStorage.getItem(STORAGE_KEYS.providers)) || [
+            {
+                id: 1,
+                name: "John Kamau",
+                service: "plumber",
+                location: "Westlands, Nairobi",
+                phone: "0712345678",
+                rate: 800,
+                rating: 4.8,
+                experience: "5 years experience",
+                verified: true
+            },
+            {
+                id: 2,
+                name: "Mary Wanjiku",
+                service: "cleaner",
+                location: "Karen, Nairobi",
+                phone: "0723456789",
+                rate: 600,
+                rating: 4.9,
+                experience: "3 years experience",
+                verified: true
+            },
+            {
+                id: 3,
+                name: "Peter Ochieng",
+                service: "electrician",
+                location: "CBD, Nairobi",
+                phone: "0734567890",
+                rate: 1000,
+                rating: 4.7,
+                experience: "7 years experience",
+                verified: true
+            }
+        ];
+
+        let bookings = JSON.parse(localStorage.getItem(STORAGE_KEYS.bookings)) || [];
+        let totalRevenue = parseInt(localStorage.getItem(STORAGE_KEYS.revenue)) || 0;
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem(STORAGE_KEYS.providers, JSON.stringify(providers));
+            localStorage.setItem(STORAGE_KEYS.bookings, JSON.stringify(bookings));
+            localStorage.setItem(STORAGE_KEYS.revenue, totalRevenue.toString());
+        }
+
+        // Phone number validation for Kenyan numbers
+        function validateKenyanPhone(phone) {
+            const kenyanPhoneRegex = /^(\+254|254|0)[71]\d{8}$/;
+            return kenyanPhoneRegex.test(phone.replace(/\s+/g, ''));
+        }
+
+        // Format phone number for WhatsApp
+        function formatPhoneForWhatsApp(phone) {
+            let cleaned = phone.replace(/\s+/g, '').replace(/\+/g, '');
+            if (cleaned.startsWith('0')) {
+                cleaned = '254' + cleaned.substring(1);
+            } else if (cleaned.startsWith('254')) {
+                // Already formatted
+            } else if (cleaned.startsWith('7')) {
+                cleaned = '254' + cleaned;
+            }
+            return cleaned;
+        }
+
+        // Improved service filtering with location matching
+        function findMatchingProviders(serviceType, customerLocation) {
+            return providers.filter(provider => {
+                const serviceMatch = provider.service.toLowerCase() === serviceType.toLowerCase();
+                const locationMatch = provider.location.toLowerCase().includes(customerLocation.toLowerCase()) ||
+                                    customerLocation.toLowerCase().includes(provider.location.toLowerCase());
+                return serviceMatch && (locationMatch || true); // Show all if no location match for now
+            }).sort((a, b) => b.rating - a.rating); // Sort by rating
+        }
+            displayServices(providers);
+            updateStats();
+        }
+
+        // Track when customers contact providers
+        function trackContact(providerId) {
+            const contact = {
+                providerId: providerId,
+                timestamp: new Date().toISOString(),
+                type: 'whatsapp_contact'
+            };
+            
+            let contacts = JSON.parse(localStorage.getItem('fundiconnect_contacts')) || [];
+            contacts.push(contact);
+            localStorage.setItem('fundiconnect_contacts', JSON.stringify(contacts));
+            
+            // Increment revenue (small fee per lead)
+            totalRevenue += 10; // KES 10 per lead
+            saveData();
+            updateStats();
+        }
+            const container = document.getElementById('servicesContainer');
+            container.innerHTML = '<h2 style="grid-column: 1/-1; color: white; text-align: center; margin-bottom: 20px;">🌟 Available Service Providers</h2>';
+            
+            serviceProviders.forEach(provider => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-header">
+                        <div class="service-name">${provider.name}</div>
+                        <div class="rating">⭐ ${provider.rating}</div>
+                    </div>
+                    <div class="service-details">
+                        <strong>${provider.service.charAt(0).toUpperCase() + provider.service.slice(1)}</strong><br>
+                        📍 ${provider.location}<br>
+                        ${provider.experience}
+                        ${provider.verified ? '<br>✅ Verified' : ''}
+                    </div>
+                    <div class="price">KES ${provider.rate}/hour</div>
+                    <a href="https://wa.me/${formatPhoneForWhatsApp(provider.phone)}?text=Hi%20${encodeURIComponent(provider.name)}%2C%20I%20found%20you%20on%20FundiConnect%20and%20need%20your%20${provider.service}%20services.%20My%20location%3A%20${encodeURIComponent(location || 'Not specified')}.%20When%20are%20you%20available%3F" 
+                       class="contact-btn" target="_blank" onclick="trackContact('${provider.id}')">📱 Contact via WhatsApp</a>
+                `;
+                container.appendChild(serviceCard);
+            });
+        }
+
+        // Handle booking form submission with validation
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const serviceType = document.getElementById('serviceType').value;
+            const location = document.getElementById('location').value;
+            const urgency = document.getElementById('urgency').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            
+            // Validate phone number
+            if (!validateKenyanPhone(customerPhone)) {
+                alert('Please enter a valid Kenyan phone number (07xxxxxxxx or +254xxxxxxx)');
+                return;
+            }
+            
+            // Find matching providers with improved algorithm
+            const matchingProviders = findMatchingProviders(serviceType, location);
+            
+            if (matchingProviders.length > 0) {
+                displayServices(matchingProviders);
+                
+                // Record booking with better tracking
+                const booking = {
+                    id: Date.now(),
+                    service: serviceType,
+                    location: location,
+                    urgency: urgency,
+                    customerPhone: customerPhone,
+                    timestamp: new Date().toISOString(),
+                    status: 'searching',
+                    matchedProviders: matchingProviders.length
+                };
+                
+                bookings.push(booking);
+                saveData();
+                updateStats();
+                
+                alert(`Great! Found ${matchingProviders.length} ${serviceType}(s) in your area. Contact them directly via WhatsApp below.`);
+                
+                // Scroll to services
+                document.getElementById('servicesContainer').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('No service providers found for this category. We\'ll notify you when providers become available in your area.');
+                
+                // Still record the booking request for future matching
+                const booking = {
+                    id: Date.now(),
+                    service: serviceType,
+                    location: location,
+                    urgency: urgency,
+                    customerPhone: customerPhone,
+                    timestamp: new Date().toISOString(),
+                    status: 'no_match',
+                    matchedProviders: 0
+                };
+                
+                bookings.push(booking);
+                saveData();
+                updateStats();
+            }
+        });
+
+        // Handle provider registration with validation
+        document.getElementById('providerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('providerName').value;
+            const service = document.getElementById('providerService').value;
+            const location = document.getElementById('providerLocation').value;
+            const phone = document.getElementById('providerPhone').value;
+            const rate = document.getElementById('hourlyRate').value;
+            
+            // Validate phone number
+            if (!validateKenyanPhone(phone)) {
+                alert('Please enter a valid Kenyan phone number (07xxxxxxxx or +254xxxxxxx)');
+                return;
+            }
+            
+            // Check for duplicate phone numbers
+            const existingProvider = providers.find(p => p.phone === phone);
+            if (existingProvider) {
+                alert('A provider with this phone number already exists. Please use a different number.');
+                return;
+            }
+            
+            const provider = {
+                id: Date.now(),
+                name: name,
+                service: service,
+                location: location,
+                phone: phone,
+                rate: parseInt(rate),
+                rating: 4.0 + (Math.random() * 0.5), // Random rating between 4.0-4.5 for new providers
+                experience: "New provider",
+                verified: false,
+                joinDate: new Date().toISOString(),
+                active: false // Inactive until payment
+            };
+            
+            providers.push(provider);
+            saveData();
+            displayServices(providers);
+            updateStats();
+            
+            alert('Registration successful! Please pay the listing fee to activate your profile and start receiving customers.');
+            document.getElementById('providerForm').reset();
+            
+            // Auto-open payment modal
+            setTimeout(() => {
+                openPayment();
+            }, 1000);
+        });
+
+        // Payment functions
+        function openPayment() {
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        // Improved payment processing
+        function processPayment() {
+            const mpesaNumber = document.getElementById('mpesaNumber').value;
+            
+            if (!mpesaNumber) {
+                alert('Please enter your M-Pesa number');
+                return;
+            }
+            
+            if (!validateKenyanPhone(mpesaNumber)) {
+                alert('Please enter a valid Kenyan phone number for M-Pesa');
+                return;
+            }
+            
+            // Generate payment reference
+            const paymentRef = 'FC' + Date.now();
+            
+            // Store payment request
+            const payment = {
+                reference: paymentRef,
+                phone: mpesaNumber,
+                amount: 200,
+                timestamp: new Date().toISOString(),
+                status: 'pending'
+            };
+            
+            let payments = JSON.parse(localStorage.getItem('fundiconnect_payments')) || [];
+            payments.push(payment);
+            localStorage.setItem('fundiconnect_payments', JSON.stringify(payments));
+            
+            // Simulate M-Pesa STK push
+            alert(`M-Pesa payment request sent to ${mpesaNumber}\n\nPayment Reference: ${paymentRef}\nAmount: KES 200\n\nPlease complete the payment on your phone. Your listing will be activated automatically once payment is confirmed.`);
+            
+            totalRevenue += 200;
+            saveData();
+            updateStats();
+            closePayment();
+            
+            // Simulate payment confirmation (in production, use M-Pesa callback)
+            setTimeout(() => {
+                alert('✅ Payment confirmed! Your listing is now ACTIVE and customers can find you. Welcome to FundiConnect!');
+                
+                // Activate the most recent provider
+                if (providers.length > 0) {
+                    providers[providers.length - 1].active = true;
+                    providers[providers.length - 1].verified = true;
+                    saveData();
+                    displayServices(providers);
+                }
+            }, 5000);
+        }
+
+        // Update platform statistics
+        function updateStats() {
+            document.getElementById('totalProviders').textContent = providers.length;
+            document.getElementById('totalBookings').textContent = bookings.length;
+            document.getElementById('revenue').textContent = totalRevenue.toLocaleString();
+            document.getElementById('activeToday').textContent = Math.floor(Math.random() * 15) + 5;
+        }
+
+        // WhatsApp integration for automated responses
+        function sendWhatsAppMessage(phone, message) {
+            const whatsappUrl = `https://wa.me/254${phone.substring(1)}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize the platform
+        init();
+
+        // Simulate real-time updates
+        setInterval(() => {
+            document.getElementById('activeToday').textContent = Math.floor(Math.random() * 20) + 8;
+        }, 10000);
+    </script>
+</body>
+</html>

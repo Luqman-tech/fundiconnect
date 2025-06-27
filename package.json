@@ -1,0 +1,32 @@
+{
+    "name": "fundiconnect",
+    "version": "1.0.0",
+    "description": "FundiConnect - Find & Book Trusted Service Providers in Kenya",
+    "main": "index.html",
+    "scripts": {
+      "start": "npx http-server . -p 3000",
+      "dev": "npx live-server .",
+      "build": "echo 'No build process needed for static HTML'",
+      "deploy": "netlify deploy --prod --dir ."
+    },
+    "keywords": [
+      "fundi",
+      "services",
+      "kenya",
+      "booking",
+      "whatsapp",
+      "freelancers",
+      "local-services"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/yourusername/fundiconnect.git"
+    },
+    "homepage": "https://yourusername.github.io/fundiconnect",
+    "devDependencies": {
+      "http-server": "^14.1.1",
+      "live-server": "^1.2.2"
+    }
+  }
