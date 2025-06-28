@@ -94,17 +94,35 @@ process.on('SIGTERM', async () => {
 // Start server
 async function startServer() {
   try {
-    // Test database connection
-    await sequelize.authenticate();
-    logger.info('Database connection established successfully');
+    // Test database connection (optional in development)
+    try {
+      await sequelize.authenticate();
+      logger.info('Database connection established successfully');
+    } catch (dbError) {
+      if (process.env.NODE_ENV === 'development') {
+        logger.warn('Database connection failed, but continuing in development mode:', dbError.message);
+      } else {
+        throw dbError;
+      }
+    }
     
-    // Test Redis connection
-    await redisClient.ping();
-    logger.info('Redis connection established successfully');
+    // Test Redis connection (optional in development)
+    try {
+      await redisClient.ping();
+      logger.info('Redis connection established successfully');
+    } catch (redisError) {
+      if (process.env.NODE_ENV === 'development') {
+        logger.warn('Redis connection failed, but continuing in development mode:', redisError.message);
+      } else {
+        throw redisError;
+      }
+    }
     
     // Start server
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
+      logger.info(`Health check available at: http://localhost:${PORT}/health`);
+      logger.info(`API available at: http://localhost:${PORT}/api`);
     });
   } catch (error) {
     logger.error('Unable to start server:', error);
